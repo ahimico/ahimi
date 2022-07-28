@@ -1,14 +1,21 @@
 {
   "name": "ahimi",
   "version": "0.0.0",
+  "private": true,
   "license": "MIT",
   "scripts": {
+    "build": "yarn nx build multiverse --prod",
+    "check-commit": "node ./tools/scripts/commit-lint.js",
+    "commit": "git-cz",
     "dev": "yarn nx serve multiverse",
     "serve:production": "yarn nx serve multiverse --prod",
-    "build": "yarn nx build multiverse --prod",
     "test": "yarn nx test"
   },
-  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
+  },
   "devDependencies": {
     "@notionhq/client": "^2.0.0",
     "@nrwl/cli": "14.4.2",
@@ -31,8 +38,10 @@
     "@typescript-eslint/parser": "^5.29.0",
     "autoprefixer": "^10.4.7",
     "babel-jest": "27.5.1",
+    "commitizen": "^4.2.5",
     "core-js": "^3.6.5",
     "cypress": "^9.1.0",
+    "cz-customizable": "^6.9.1",
     "eslint": "~8.15.0",
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "8.1.0",
@@ -55,14 +64,5 @@
     "ts-node": "~10.8.0",
     "tslib": "^2.3.0",
     "typescript": "~4.7.2"
-  },
-  "dependencies": {
-    "@nrwl/next": "14.4.2",
-    "core-js": "^3.6.5",
-    "next": "12.1.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "regenerator-runtime": "0.13.7",
-    "tslib": "^2.3.0"
   }
 }
