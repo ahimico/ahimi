@@ -1,12 +1,16 @@
-import { ReactQueryProvider } from '@multiverse/src/providers/react-query';
+import { ReactQueryProvider } from '@multiverse/src/providers';
+import { NextPageWithLayout } from '@multiverse/src/types';
 import { AppProps } from 'next/app';
 import '~styles/tailwind.css';
 
-function MultiverseApp({ Component, pageProps }: AppProps) {
-  return (
+type AppPropsWithLayout = AppProps & { Component: NextPageWithLayout };
+function MultiverseApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout || (page => page);
+
+  return getLayout(
     <ReactQueryProvider state={pageProps.dehydratedState}>
       <Component {...pageProps} />
-    </ReactQueryProvider>
+    </ReactQueryProvider>,
   );
 }
 
