@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "yarn nx serve",
-    "build": "yarn nx build",
+    "serve:production": "yarn nx serve multiverse:serve --prod",
+    "build": "yarn nx build multiverse --prod",
     "test": "yarn nx test"
   },
   "private": true,
