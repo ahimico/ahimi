@@ -1,16 +1,23 @@
 import styled from '@emotion/styled';
+import { Client } from '@notionhq/client';
 
 const StyledPage = styled.div`
   .page {
   }
 `;
 
-export function Index() {
+// Initializing a client
+const notion = new Client({ auth: process.env.NOTION_TOKEN });
+const databaseId = process.env.NOTION_DATABASE_ID;
+
+export function Index({ response, page }) {
   /*
    * Replace the elements below with your own.
    *
    * Note: The corresponding styles are in the ./index.@emotion/styled file.
    */
+
+  console.log(`response`, { response, page });
   return (
     <StyledPage>
       <div className="wrapper">
@@ -418,3 +425,12 @@ export function Index() {
 }
 
 export default Index;
+
+export async function getServerSideProps(context) {
+  const response = await notion.databases.query({ database_id: databaseId });
+  const pageId = 'ef34276b-ff88-4171-9c92-3d403d81e3ea';
+  const page = await notion.pages.retrieve({ page_id: pageId });
+  return {
+    props: { response, page }, // will be passed to the page component as props
+  };
+}

@@ -9,7 +9,7 @@
       "defaultConfiguration": "production",
       "options": {
         "root": "apps/multiverse",
-        "outputPath": "dist/apps/multiverse"
+        "outputPath": ".nx/dist/apps/multiverse"
       },
       "configurations": {
         "development": {},
@@ -42,7 +42,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/multiverse"],
+      "outputs": [".nx/coverage/apps/multiverse"],
       "options": {
         "jestConfig": "apps/multiverse/jest.config.ts",
         "passWithNoTests": true
