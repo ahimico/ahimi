@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "shared-styles": "libs/styles",
     "multiverse": "apps/multiverse",
     "multiverse-e2e": "apps/multiverse-e2e"
   }
