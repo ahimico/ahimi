@@ -1,0 +1,7 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/configs/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": ["scope:libs", "type:config"]
+}
