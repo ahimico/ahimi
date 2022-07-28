@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+yarn check-commit
+yarn nx workspace-lint
+yarn nx format:check
+yarn nx affected --target=lint --parallel=3
+yarn nx affected --target=test --parallel=3
+yarn nx affected --target=build --parallel=3

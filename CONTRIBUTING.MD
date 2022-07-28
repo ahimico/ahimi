@@ -148,5 +148,3 @@ Closes #15
 
 To simplify and automate the process of committing with this format,
 **ahimi is a [Commitizen](https://github.com/commitizen/cz-cli) friendly repository**, just do `git add` and execute `yarn commit`.
-
-> you might need to install `git-cz` first :)
