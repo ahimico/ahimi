@@ -1,18 +1,13 @@
+import { ReactQueryProvider } from '@multiverse/src/providers/react-query';
 import { AppProps } from 'next/app';
-import Head from 'next/head';
 import '~styles/tailwind.css';
 
-function CustomApp({ Component, pageProps }: AppProps) {
+function MultiverseApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Head>
-        <title>Welcome to multiverse!</title>
-      </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
+    <ReactQueryProvider state={pageProps.dehydratedState}>
+      <Component {...pageProps} />
+    </ReactQueryProvider>
   );
 }
 
-export default CustomApp;
+export default MultiverseApp;
