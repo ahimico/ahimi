@@ -1,6 +1,6 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import '@multiverse/src/styles/tailwind.css';
+import '~styles/tailwind.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (

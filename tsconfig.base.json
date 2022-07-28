@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@multiverse/*": ["apps/multiverse/*"]
+      "@multiverse/*": ["apps/multiverse/*"],
+      "~styles/*": ["libs/styles/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
