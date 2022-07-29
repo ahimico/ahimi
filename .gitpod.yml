@@ -4,5 +4,5 @@
 
 tasks:
   - name: Initialization
-    init: yarn install && yarn run build
+    init: yarn install
     command: yarn run dev
