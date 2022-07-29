@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@multiverse/*": ["apps/multiverse/*"],
-      "~styles/*": ["libs/styles/src/*"]
+      "~styles/*": ["libs/styles/src/*"],
+      "~configs": ["libs/configs/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
