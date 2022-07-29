@@ -3,7 +3,7 @@ module.exports = {
     upload: { target: 'temporary-public-storage' },
     collect: {
       url: ['http://localhost:3000/'],
-      startServerCommand: 'serve:production',
+      startServerCommand: 'yarn run serve:production',
       startServerReadyPattern: 'ready on',
     },
     assert: {
