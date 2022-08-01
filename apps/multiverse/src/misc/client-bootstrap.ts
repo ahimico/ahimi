@@ -10,5 +10,5 @@ reach out to me over https://github.com/realamirhe
 `;
 
 export const clientBootstrap = () => {
-  console.log(CLIENT_BOOTSTRAP_MESSAGE);
+  window.console.log(CLIENT_BOOTSTRAP_MESSAGE);
 };

@@ -5,7 +5,12 @@ const withPlugins = require('next-compose-plugins');
 const nxConfig = { nx: { svgr: true } };
 
 /** @type {import('next').NextConfig} */
-const nextConfig = { reactStrictMode: true };
+const nextConfig = {
+  reactStrictMode: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+};
 
 const INVALID_NEXT_CONFIG_KEYS = ['nx'];
 
