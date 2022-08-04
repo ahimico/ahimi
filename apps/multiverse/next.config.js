@@ -20,7 +20,7 @@ module.exports = withPlugins(
     // [withPWA, pwaConfig], // issue https://github.com/shadowwalker/next-pwa/issues/371#issue-1320841797
     [withNx, nxConfig],
     config => {
-      for (let key of INVALID_NEXT_CONFIG_KEYS) delete config[key];
+      for (const key of INVALID_NEXT_CONFIG_KEYS) delete config[key];
       return config;
     },
   ],
