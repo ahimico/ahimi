@@ -9,19 +9,19 @@ export function ExperimentalContextMenu() {
         </div>
       </ContextMenu.Trigger>
       <ContextMenu.Portal>
-        <ContextMenu.Content className="bg-white overflow-hidden p-3 rounded-lg w-52 shadow-xl">
+        <ContextMenu.Content className="w-52 overflow-hidden rounded-lg bg-white p-3 shadow-xl">
           <ContextMenu.Label hidden>context menu label</ContextMenu.Label>
-          <ContextMenu.Item className="flex outline-none relative text-black rounded-sm items-center pr-1 pl-2 h-6 leading-none disabled:text-gray-400">
-            Back <kbd className="block text-right ml-auto">{`⌘+[`}</kbd>
+          <ContextMenu.Item className="relative flex h-6 items-center rounded-sm pr-1 pl-2 leading-none text-black outline-none disabled:text-gray-400">
+            Back <kbd className="ml-auto block text-right">{`⌘+[`}</kbd>
           </ContextMenu.Item>
 
-          <ContextMenu.Separator className="h-0.5 bg-slate-800 my-1" />
+          <ContextMenu.Separator className="my-1 h-0.5 bg-slate-800" />
 
           <ContextMenu.Item
-            className="flex outline-none relative text-black rounded-sm items-center pr-1 pl-2 h-6 leading-none [data-disable]:text-gray-400"
             disabled
+            className="[data-disable]:text-gray-400 relative flex h-6 items-center rounded-sm pr-1 pl-2 leading-none text-black outline-none"
           >
-            Forward <kbd className="block text-right ml-auto">{`⌘+]`}</kbd>
+            Forward <kbd className="ml-auto block text-right">{`⌘+]`}</kbd>
           </ContextMenu.Item>
         </ContextMenu.Content>
       </ContextMenu.Portal>
