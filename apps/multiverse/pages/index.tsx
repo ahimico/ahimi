@@ -1,3 +1,4 @@
+import { DescriptiveCategory } from '@multiverse/src/components/descriptive-category';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Head from 'next/head';
@@ -14,11 +15,9 @@ export function Public() {
       <Head>
         <title>My Multiverse</title>
       </Head>
-      <div>
-        <pre>
-          <code>{JSON.stringify(query, null, 2)}</code>
-        </pre>
-      </div>
+      <main>
+        <DescriptiveCategory />
+      </main>
     </>
   );
 }
