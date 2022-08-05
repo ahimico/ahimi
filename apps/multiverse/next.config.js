@@ -7,7 +7,9 @@ const nxConfig = { nx: { svgr: true } };
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images: { domains: ['cdn.dribbble.com'] },
+  images: {
+    domains: ['cdn.dribbble.com', 'cdna.artstation.com', 'cdnb.artstation.com'],
+  },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
