@@ -4,9 +4,11 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints';
 import { notion } from '~configs';
 
-export type NotionPage = QueryDatabaseResponse['results'][number] & {
-  properties: unknown;
-};
+export type NotionPage = Extract<
+  QueryDatabaseResponse['results'][number],
+  { properties: unknown }
+>;
+
 export const propertyRetriever = (page: NotionPage) => {
   const properties = Promise.all(
     Object.values(page.properties).map(property =>
@@ -37,8 +39,10 @@ export const propertySelector = (properties: GetPagePropertyResponse[]) => {
 };
 
 export const commonPropertySelector = (page: NotionPage) => {
+  type PageCover = Extract<NotionPage['cover'], { type: 'external' }>;
+  type PageIcon = Extract<NotionPage['icon'], { type: 'emoji' }>;
   return {
-    url: page.cover.external.url,
-    icon: page.icon.emoji,
+    url: (page.cover as PageCover).external.url,
+    icon: (page.icon as PageIcon).emoji,
   };
 };
