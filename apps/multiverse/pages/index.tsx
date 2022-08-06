@@ -50,5 +50,5 @@ export const getStaticProps: GetStaticProps = async () => {
     }),
   );
 
-  return { props: { categories }, revalidate: 15 * 60 }; // 15 min
+  return { props: { categories }, revalidate: 5 * 60 }; // 15 min
 };
