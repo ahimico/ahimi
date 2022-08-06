@@ -19,4 +19,6 @@ jobs:
       - run: npx nx format:check
       - run: npx nx affected --target=lint --parallel=3
       - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
+      - name: create the fake env file
+        run: cp .env.sample .env
       - run: npx nx affected --target=build --parallel=3
