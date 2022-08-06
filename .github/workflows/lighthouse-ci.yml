@@ -11,6 +11,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
+      - name: create the env file
+        run: |
+          touch .env
+          echo NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} >> .env
       - name: installation and building phase
         run: |
           yarn install

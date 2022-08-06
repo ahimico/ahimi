@@ -19,4 +19,8 @@ jobs:
       - run: npx nx format:check
       - run: npx nx affected --target=lint --parallel=3
       - run: npx nx affected --target=test --parallel=3 --ci --code-coverage
+      - name: create the env file
+        run: |
+          touch .env
+          echo NOTION_TOKEN=${{ secrets.NOTION_TOKEN }} >> .env
       - run: npx nx affected --target=build --parallel=3

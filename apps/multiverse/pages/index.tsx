@@ -1,51 +1,54 @@
-import * as ContextMenu from '@radix-ui/react-context-menu';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { DescriptiveCategory } from '@multiverse/src/components/descriptive-category';
+import {
+  commonPropertySelector,
+  NotionPage,
+  propertyRetriever,
+  propertySelector,
+} from '@multiverse/src/helpers/notion';
+import { domAnimation, LazyMotion } from 'framer-motion';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import * as R from 'rambda';
+import { notion, NOTION_DATABASE_IDS } from '~configs';
 
-export function Public() {
-  const query = useQuery(['test'], () => {
-    return axios
-      .get('https://jsonplaceholder.typicode.com/todos/1')
-      .then(res => res.data);
-  });
-
+export default function Public({ categories }) {
   return (
     <>
       <Head>
         <title>My Multiverse</title>
       </Head>
-      <div>
-        main
-        <div className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          <span className="block text-red-600">Welcome multiverse 👋</span>
-        </div>
-        <ContextMenu.Root>
-          <ContextMenu.Trigger>Click Me</ContextMenu.Trigger>
-          <ContextMenu.Portal>
-            <ContextMenu.Content className="bg-white overflow-hidden p-3 rounded-lg w-52 shadow-xl">
-              <ContextMenu.Label hidden>context menu label</ContextMenu.Label>
-              <ContextMenu.Item className="flex outline-none relative text-black rounded-sm items-center pr-1 pl-2 h-6 leading-none disabled:text-gray-400">
-                Back <kbd className="block text-right ml-auto">{`⌘+[`}</kbd>
-              </ContextMenu.Item>
-
-              <ContextMenu.Separator className="h-0.5 bg-slate-800 my-1" />
-
-              <ContextMenu.Item
-                className="flex outline-none relative text-black rounded-sm items-center pr-1 pl-2 h-6 leading-none [data-disable]:text-gray-400"
-                disabled
-              >
-                Forward <kbd className="block text-right ml-auto">{`⌘+]`}</kbd>
-              </ContextMenu.Item>
-            </ContextMenu.Content>
-          </ContextMenu.Portal>
-        </ContextMenu.Root>
-        <pre>
-          <code>{JSON.stringify(query, null, 2)}</code>
-        </pre>
-      </div>
+      <main>
+        <LazyMotion strict features={domAnimation}>
+          {categories.map(category => (
+            <DescriptiveCategory
+              key={category.category}
+              isRtl={category.order % 2 === 0}
+              {...category}
+            />
+          ))}
+        </LazyMotion>
+      </main>
     </>
   );
 }
 
-export default Public;
+export const getStaticProps: GetStaticProps = async () => {
+  const { results } = await notion.databases.query({
+    database_id: NOTION_DATABASE_IDS.CATEGORIES,
+    sorts: [{ property: 'order', direction: 'ascending' }],
+  });
+  const categories = await Promise.all(
+    results.map(async (page: NotionPage) => {
+      const properties = await propertyRetriever(page);
+      const lensedProperties = propertySelector(properties);
+      return {
+        ...commonPropertySelector(page),
+        ...Object.fromEntries(
+          R.zip(Object.keys(page.properties), lensedProperties),
+        ),
+      };
+    }),
+  );
+
+  return { props: { categories }, revalidate: 15 * 60 }; // 15 min
+};
