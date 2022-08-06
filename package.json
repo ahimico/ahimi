@@ -8,7 +8,7 @@
     "build:tools": "yarn concurrently yarn:build:tools-*",
     "build:tools-executors": "yarn tsc --p tools/tsconfig.executors.json",
     "build:tools-scripts": "yarn tsc --p tools/tsconfig.scripts.json",
-    "check-commit": "node ./tools/scripts/commit-lint.js",
+    "check-commit": "ts-node ./tools/scripts/commit-lint.ts",
     "commit": "git-cz",
     "dev": "yarn nx serve multiverse",
     "prepare": "husky install",
@@ -80,8 +80,7 @@
     "ts-jest": "27.1.4",
     "ts-node": "~10.8.0",
     "tslib": "^2.3.0",
-    "typescript": "~4.7.2",
-    "zx": "^7.0.8"
+    "typescript": "~4.7.2"
   },
   "engines": {
     "node": ">= 16.14.0",

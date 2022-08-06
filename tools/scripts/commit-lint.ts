@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
+// @ts-ignore
 import { scopes, types } from '../../.cz-config.js';
+
+type Types = { value: string; name: string }[];
+type Scopes = { name: string; description: string }[];
 
 console.log('🐳🐳🐳 Validating git commit message 🐳🐳🐳');
 const gitMessage = require('child_process')
@@ -8,8 +12,8 @@ const gitMessage = require('child_process')
   .toString()
   .trim();
 
-const allowedTypes = types.map(type => type.value);
-const allowedScopes = scopes.map(scope => scope.name);
+const allowedTypes = (types as Types).map(type => type.value);
+const allowedScopes = (scopes as Scopes).map(scope => scope.name);
 
 const commitMsgRegex = `(${allowedTypes.join('|')})\\((${allowedScopes.join(
   '|',
