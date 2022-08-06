@@ -56,6 +56,13 @@
       "options": {
         "lintFilePatterns": ["apps/multiverse/**/*.{ts,tsx,js,jsx}"]
       }
+    },
+    "type-check": {
+      "executor": "./tools/executors/type-check:type-check",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "outputPath": ".nx/types/apps/multiverse"
+      }
     }
   },
   "tags": [],
