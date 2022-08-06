@@ -1,6 +1,12 @@
 const withNx = require('@nrwl/next/plugins/with-nx');
 const withPlugins = require('next-compose-plugins');
 
+const securityHeaders = [
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  { key: 'X-XSS-Protection', value: '1; mode=block' },
+];
+
 /** @type {import('@nrwl/next/plugins/with-nx').WithNxOptions} */
 const nxConfig = { nx: { svgr: true } };
 
@@ -12,6 +18,9 @@ const nextConfig = {
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+  },
+  async headers() {
+    return [{ source: '/:path*', headers: securityHeaders }];
   },
 };
 
