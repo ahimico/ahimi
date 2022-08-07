@@ -11,7 +11,8 @@ import Head from 'next/head';
 import * as R from 'rambda';
 import { notion, NOTION_DATABASE_IDS } from '~configs';
 
-export default function Public({ categories }) {
+export default function Public({ categories, ...rest }) {
+  console.log(`rest`, rest);
   return (
     <>
       <Head>

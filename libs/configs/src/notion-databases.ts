@@ -1,3 +1,4 @@
 export const NOTION_DATABASE_IDS = {
   CATEGORIES: 'a2c739fc46784e4b8b4af48ca465f335',
+  ARTS: '4314eb1d7bc74d43865aeaa11e47fd15',
 };
