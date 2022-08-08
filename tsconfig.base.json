@@ -17,6 +17,7 @@
     "paths": {
       "@multiverse/*": ["apps/multiverse/*"],
       "~styles/*": ["libs/styles/src/*"],
+      "~assets/*": ["libs/assets/src/*"],
       "~configs": ["libs/configs/src/index.ts"]
     }
   },

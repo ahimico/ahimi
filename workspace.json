@@ -5,6 +5,7 @@
     "multiverse-e2e": "apps/multiverse-e2e",
     "multiverse": "apps/multiverse",
     "shared-configs": "libs/configs",
-    "shared-styles": "libs/styles"
+    "shared-styles": "libs/styles",
+    "shared-assets": "libs/assets"
   }
 }

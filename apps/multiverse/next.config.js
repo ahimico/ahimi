@@ -14,7 +14,13 @@ const nxConfig = { nx: { svgr: true } };
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['cdn.dribbble.com', 'cdna.artstation.com', 'cdnb.artstation.com'],
+    domains: [
+      'cdn.dribbble.com',
+      'cdna.artstation.com',
+      'cdnb.artstation.com',
+      // imdb images
+      'm.media-amazon.com',
+    ],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

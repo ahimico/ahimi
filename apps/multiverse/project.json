@@ -66,5 +66,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["shared-styles", "shared-configs"]
+  "implicitDependencies": ["shared-styles", "shared-configs", "shared-assets"]
 }
